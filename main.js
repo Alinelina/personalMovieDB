@@ -34,14 +34,6 @@ const personalMovieDB = {
     privat: false
 };
 
-function showMyBD() {
-    if (personalMovieDB.privat === false) {
-        console.log(personalMovieDB);
-    }
-}
-
-//showMyBD();
-
 function detectPersonalLevel() {
     if (personalMovieDB.count < 10 && personalMovieDB.count > 0) {
         console.log("Просмотрено довольно мало фильмов");
@@ -79,5 +71,21 @@ function writeYourGenres() {
     }
 }
 
-writeYourGenres();
-console.log(personalMovieDB);
+// writeYourGenres();
+
+
+// function showMyDB() {
+//     if (personalMovieDB.privat === false) {
+//         console.log(personalMovieDB);
+//     }
+// }
+
+function showMyDB(hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+}
+
+// showMyDB(personalMovieDB.privat);
+
+//console.log(personalMovieDB);
