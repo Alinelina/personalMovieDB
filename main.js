@@ -51,8 +51,8 @@ function detectPersonalLevel() {
 
 function rememberMyFilms() {
     for (let i = 0; i < 2; i++) {
-        let lastMovie = prompt('Один из последних просмотренных фильмов?', '');
-        let countsOfStars = prompt('На сколько оцените его?', '');
+        let lastMovie = prompt('Один из последних просмотренных фильмов?', '').trim();
+        let countsOfStars = prompt('На сколько оцените его?', '').trim();
 
         if (lastMovie != null && countsOfStars != null && lastMovie != '' && countsOfStars != '' && lastMovie.length < 50) {
 
