@@ -27,7 +27,8 @@ const personalMovieDB = {
 
         while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
             numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-        }
+        };
+        personalMovieDB.count = numberOfFilms;
     },
     detectPersonalLevel() {
         if (personalMovieDB.count < 10 && personalMovieDB.count > 0) {
@@ -44,9 +45,9 @@ const personalMovieDB = {
         for (let i = 0; i < 2; i++) {
             let lastMovie = prompt('Один из последних просмотренных фильмов?', '').trim();
             let countsOfStars = prompt('На сколько оцените его?', '').trim();
-    
+
             if (lastMovie != null && countsOfStars != null && lastMovie != '' && countsOfStars != '' && lastMovie.length < 50) {
-    
+
                 personalMovieDB.movies[lastMovie] = countsOfStars;
             } else {
                 i--;
@@ -54,26 +55,37 @@ const personalMovieDB = {
         }
     },
     writeYourGenres() {
-        for (let i = 0; i < 3; i++) {
-            personalMovieDB.genres[i] = prompt(`Ваш любимый жанр под номером ${i + 1}`, '');
+        for (let i = 1; i <= 3; i++) {
+            personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`, '');
+            while (personalMovieDB.genres[i - 1] === null || personalMovieDB.genres[i - 1] === '') {
+                personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`, '');
+            }
         }
+        this.genres.forEach((item, index) => {
+            console.log(`Любимый жанр #${index + 1} - это ${item}`);
+        });
     },
     showMyDB(hidden) {
         if (!hidden) {
             console.log(personalMovieDB);
         }
-    }
+    },
+    toggleVisibleMyDB() {
+        this.privat === true ? this.privat = false : this.privat = true;
+    },
 };
 
 personalMovieDB.start();
 
-personalMovieDB.detectPersonalLevel();
+//personalMovieDB.detectPersonalLevel();
 
-personalMovieDB.rememberMyFilms();
+//personalMovieDB.rememberMyFilms();
 
 personalMovieDB.writeYourGenres();
 
-personalMovieDB.showMyDB(personalMovieDB.privat);
+//personalMovieDB.showMyDB(personalMovieDB.privat);
+
+//personalMovieDB.toggleVisibleMyDB();
 
 console.log(personalMovieDB);
 
